@@ -1,4 +1,4 @@
-import { list, add, remove, create } from "./functions.mjs"
+import { list, add, remove, create, deletePlaylist } from "./functions.mjs"
 
 function parseArgs(args) {
   const parsedArgs = {}
@@ -40,6 +40,9 @@ function getFunction(kwargs) {
 
   if (func == "create") 
     create(mainArg, remainingArg)
+
+  if (func == "delete")
+    deletePlaylist(mainArg, remainingArg)
 }
 
 function main(args) {

@@ -53,3 +53,14 @@ export function create(name) {
     playlistData[name] = []
     writePlaylistData(playlistData)
 }
+
+export function deletePlaylist(name) {
+    const playlistData = getPlaylistData()
+    if (!Object.keys(playlistData).includes(name)) {
+        return console.error(`Can't delete playlist ${name}, no playlist has that name`)
+    }
+
+    delete playlistData[name]
+    console.log(playlistData)
+    writePlaylistData(playlistData)
+}
