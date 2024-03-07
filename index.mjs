@@ -19,6 +19,8 @@ function parseArgs(args) {
   return parsedArgs
 }
 
+function list()
+
 function main(args) {
   const kwargs = parseArgs(args)
   console.log(kwargs)
