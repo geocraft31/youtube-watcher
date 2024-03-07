@@ -1,7 +1,7 @@
 ### Function to add:
 
-- [ ] -list list all created playlist
-- [ ] -list < playlist > list all videos from playlist
+- [x] -list list all created playlist
+- [x] -list < playlist > list all videos from playlist
 - [ ] -add < video > < playlist > Add video to playlist
 - [ ] -remove < video > < playlist > Remove video from playlist
 - [ ] -playlist Plays videos from playlist 
