@@ -1,6 +1,6 @@
 import functions from "./functions.mjs"
 
-const { list } = functions
+const { list, add } = functions
 
 function parseArgs(args) {
   const parsedArgs = {}
@@ -23,14 +23,20 @@ function parseArgs(args) {
 }
 
 function getFunction(kwargs) {
-  
-  Object.keys(kwargs).forEach(key => {
-    const value = kwargs[key]
 
-    if (key == "list") {
-      list(value)
-    }
-  })
+  const func = Object.keys(kwargs)[0]
+  const mainArg = kwargs[func]
+  delete kwargs[func]
+
+  const remainingArg = kwargs
+
+  if (func == "list")
+    list(mainArg, remainingArg)
+
+
+  if (func == "add")
+    add(mainArg, remainingArg)
+
 }
 
 function main(args) {

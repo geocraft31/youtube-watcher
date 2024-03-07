@@ -13,4 +13,19 @@ function getPlaylistData() {
     }
 }
 
-export default getPlaylistData
+function writePlaylistData(data) {
+    try {
+        if (typeof data != "string") {
+            data = JSON.stringify(data)
+        }
+        
+        fs.writeFileSync(`${filePath}/playlist.json`, data, {encoding: 'utf-8'})
+    } catch (err) {
+        console.error(err)
+    }
+}
+
+export default {
+    getPlaylistData, 
+    writePlaylistData
+}
