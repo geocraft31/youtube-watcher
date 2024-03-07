@@ -1,3 +1,6 @@
+import functions from "./functions.mjs"
+
+const { list } = functions
 
 function parseArgs(args) {
   const parsedArgs = {}
@@ -19,12 +22,20 @@ function parseArgs(args) {
   return parsedArgs
 }
 
-function list()
+function getFunction(kwargs) {
+  
+  Object.keys(kwargs).forEach(key => {
+    const value = kwargs[key]
+
+    if (key == "list") {
+      list(value)
+    }
+  })
+}
 
 function main(args) {
   const kwargs = parseArgs(args)
-  console.log(kwargs)
-
+  getFunction(kwargs)
 }
 
 export default main;
