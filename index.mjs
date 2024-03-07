@@ -1,4 +1,4 @@
-import { list, add, remove, create, deletePlaylist, play } from "./functions.mjs"
+import { list, add, remove, create, deletePlaylist, play, playlist } from "./functions.mjs"
 
 function parseArgs(args) {
   const parsedArgs = {}
@@ -53,6 +53,9 @@ function getFunction(kwargs) {
 
   if (func == "song")
     play(mainArg, remainingArg)
+
+  if (func == "playlist")
+    playlist(mainArg, remainingArg)
 }
 
 function main(args) {

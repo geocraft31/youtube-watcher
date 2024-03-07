@@ -7,7 +7,7 @@
 - [x] -remove < video > < playlist > Remove video from playlist
 - [x] -create < playlist > Creates a new playlist
 - [x] -delete < playlist > Delets the playlist
-- [ ] -playlist Plays videos from playlist 
+- [x] -playlist Plays videos from playlist 
   - [ ] -shuffle Plays videos in random order
   - [ ] -loop Play videos in loop
 - [ ] Help command

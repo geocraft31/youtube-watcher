@@ -73,3 +73,12 @@ export async function play(songList) {
     }
 
 }
+
+export function playlist(name) {
+    const playlistData = getPlaylistData()
+    if (!Object.keys(playlistData).includes(name)) {
+        return console.error(`Playlist ${name} not found.`)
+    }
+
+    play(playlistData[name])
+}
