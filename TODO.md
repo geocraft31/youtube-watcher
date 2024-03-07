@@ -1,3 +1,5 @@
+### Function to add:
+
 [] -list list all created playlist
 [] -list <playlist> list all videos from playlist
 [] -add <video> <playlist> Add video to playlist
