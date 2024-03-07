@@ -3,7 +3,7 @@
 - [x] -list list all created playlist
 - [x] -list < playlist > list all videos from playlist
 - [x] -add < video > < playlist > Add video to playlist
-- [ ] -remove < video > < playlist > Remove video from playlist
+- [x] -remove < video > < playlist > Remove video from playlist
 - [ ] -create < playlist > Creates a new playlist
 - [ ] -delete < playlist > Delets the playlist
 - [ ] -playlist Plays videos from playlist 

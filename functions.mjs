@@ -1,8 +1,6 @@
-import util from "./util.mjs";
+import { getPlaylistData, writePlaylistData } from "./util.mjs"
 
-const {getPlaylistData, writePlaylistData} = util 
-
-function list(targetPl) {
+export function list(targetPl) {
     const playlistData = getPlaylistData()
 
     if (typeof targetPl === "string") {
@@ -20,7 +18,7 @@ function list(targetPl) {
     }
 }
 
-function add(song, kwargs) {
+export function add(song, kwargs) {
     const playlist = kwargs["list"]
 
     if (typeof playlist != "string") {
@@ -30,10 +28,18 @@ function add(song, kwargs) {
     const playlistData = getPlaylistData()
     playlistData[playlist].push(song)
     writePlaylistData(playlistData)
-
 }
 
-export default {
-    list,
-    add
+export function remove(song, kwargs) {
+    const playlist = kwargs["list"]
+
+    if (typeof playlist != "string") {
+        return console.error("Playlist not provided or doesn't exist")
     }
+
+    let playlistData = getPlaylistData()
+    const songIndex = playlistData[playlist].indexOf(song)
+
+    playlistData[playlist].splice(songIndex, 1)
+    writePlaylistData(playlistData)
+}
