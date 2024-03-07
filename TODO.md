@@ -1,5 +1,6 @@
 ### Function to add:
 
+- [x] < song > Play the audio of given song
 - [x] -list list all created playlist
 - [x] -list < playlist > list all videos from playlist
 - [x] -add < video > < playlist > Add video to playlist

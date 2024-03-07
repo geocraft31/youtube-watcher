@@ -24,3 +24,7 @@ export function writePlaylistData(data) {
         console.error(err)
     }
 }
+
+export function sleep(ms){
+    return new Promise(resolve => setTimeout(resolve, ms))
+}

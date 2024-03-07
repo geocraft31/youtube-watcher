@@ -1,4 +1,5 @@
 import { getPlaylistData, writePlaylistData } from "./util.mjs"
+import { playAudioFromVideo } from "./audio.mjs"
 
 export function list(targetPl) {
     const playlistData = getPlaylistData()
@@ -63,4 +64,12 @@ export function deletePlaylist(name) {
     delete playlistData[name]
     console.log(playlistData)
     writePlaylistData(playlistData)
+}
+
+export async function play(songList) {
+
+    for (const song of songList) {
+        await playAudioFromVideo(song);
+    }
+
 }
