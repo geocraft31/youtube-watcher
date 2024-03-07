@@ -43,3 +43,13 @@ export function remove(song, kwargs) {
     playlistData[playlist].splice(songIndex, 1)
     writePlaylistData(playlistData)
 }
+
+export function create(name) {
+    const playlistData = getPlaylistData()
+    if (Object.keys(playlistData).includes(name)) {
+        return console.error(`Can't create playlist ${name}, another playlist already has this name`)
+    }
+
+    playlistData[name] = []
+    writePlaylistData(playlistData)
+}

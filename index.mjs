@@ -1,4 +1,4 @@
-import { list, add, remove } from "./functions.mjs"
+import { list, add, remove, create } from "./functions.mjs"
 
 function parseArgs(args) {
   const parsedArgs = {}
@@ -37,6 +37,9 @@ function getFunction(kwargs) {
 
   if (func == "remove") 
     remove(mainArg, remainingArg)
+
+  if (func == "create") 
+    create(mainArg, remainingArg)
 }
 
 function main(args) {
