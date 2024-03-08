@@ -9,5 +9,5 @@
 - [x] -delete < playlist > Delets the playlist
 - [x] -playlist Plays videos from playlist 
   - [ ] -shuffle Plays videos in random order
-  - [ ] -loop Play videos in loop
+  - [x] -loop Play videos in loop
 - [ ] Help command

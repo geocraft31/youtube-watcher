@@ -3,17 +3,6 @@ import { opus } from "prism-media";
 import Speaker from "speaker";
 import { sleep } from "./util.mjs";
 
-const opusDecoder = new opus.Decoder({
-    channels: 2,
-    rate: 48000,
-    frameSize: 960,
-});
-
-const speaker = new Speaker({
-    channels: 2,
-    bitDepth: 16,
-    sampleRate: 48000,
-});
 
 
 async function getVideoData(query) {
@@ -33,6 +22,7 @@ async function getVideoData(query) {
   if (queryType == "yt_video" || queryType == "search") {
     const searchResult = await play.search(query, {
       source: { youtube: "video" },
+      limit: 1
     });
     return searchResult;
   }
@@ -48,7 +38,22 @@ export async function playAudioFromVideo(query) {
   const videoList = await getVideoData(query);
   const video = videoList[0]
 
-  var source = await play.stream(video.url);
+const opusDecoder = new opus.Decoder({
+    channels: 2,
+    rate: 48000,
+    frameSize: 960,
+});
+
+const speaker = new Speaker({
+    channels: 2,
+    bitDepth: 16,
+    sampleRate: 48000,
+});
+    try {
+        var source = await play.stream(video.url) ;
+    } catch {
+        console.error(`Error while getting video data`)
+    }
 
   console.log(`Now playing ${video.title}`)
 
@@ -66,9 +71,6 @@ export async function playAudioFromVideo(query) {
     speaker.write(decodedData);
   });
   
-  speaker.on("finish", async () => {
-    return true
-  });
-  
-  await sleep(video.durationInSec * 1000)
+  await sleep((video.durationInSec) * 1000)
+
 }

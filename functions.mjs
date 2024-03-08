@@ -1,4 +1,4 @@
-import { getPlaylistData, writePlaylistData } from "./util.mjs"
+import { getPlaylistData, sleep, writePlaylistData } from "./util.mjs"
 import { playAudioFromVideo } from "./audio.mjs"
 
 export function list(targetPl) {
@@ -69,16 +69,30 @@ export function deletePlaylist(name) {
 export async function play(songList) {
 
     for (const song of songList) {
+        console.log(song)
         await playAudioFromVideo(song);
     }
-
+    
+    return 
 }
 
-export function playlist(name) {
+export async function playlist(name, kwargs) {
+    const loop = kwargs["loop"]
+    const shuffle = kwargs["shuffle"]
+
     const playlistData = getPlaylistData()
     if (!Object.keys(playlistData).includes(name)) {
         return console.error(`Playlist ${name} not found.`)
     }
 
-    play(playlistData[name])
+    await play(playlistData[name])
+
+    while (loop) {
+        await sleep(100)
+
+        await play(playlistData[name])
+    }
+
+
+
 }
