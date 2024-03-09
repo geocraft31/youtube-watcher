@@ -25,7 +25,6 @@ function shuffle(playlist) {
     }
 }
 
-
 export function list(targetPl) {
     const playlistData = getPlaylistData()
 

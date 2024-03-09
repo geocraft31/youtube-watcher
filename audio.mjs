@@ -1,7 +1,7 @@
 import play from "play-dl";
 import { opus } from "prism-media";
 import Speaker from "speaker";
-import { sleep } from "./util.mjs";
+import { hyperlink, sleep } from "./util.mjs";
 
 
 
@@ -56,7 +56,8 @@ const speaker = new Speaker({
         console.error(`Error while getting video data`)
     }
 
-  console.log(`Now playing ${video.title}`)
+  console.log(`Now playing: ${hyperlink(video.url, video.title)}`)
+  console.log(`From:        ${hyperlink(video.channel.url, video.channel.name)}`)
 
   source.stream.on("data", (data) => {
     opusDecoder.write(data);

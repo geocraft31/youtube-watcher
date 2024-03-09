@@ -28,3 +28,7 @@ export function writePlaylistData(data) {
 export function sleep(ms){
     return new Promise(resolve => setTimeout(resolve, ms))
 }
+
+export function hyperlink(url, text) {
+    return `\x1b]8;;${url}\x1b\\${text}\x1b]8;;\x1b\\`;
+}
