@@ -21,7 +21,6 @@ function shuffle(playlist) {
         }
 
     } catch (err) {
-        console.error(err)
         console.log("No songs to shuffle")
     }
 }
@@ -88,14 +87,12 @@ export function deletePlaylist(name) {
     }
 
     delete playlistData[name]
-    console.log(playlistData)
     writePlaylistData(playlistData)
 }
 
 export async function play(songList) {
 
     for (const song of songList) {
-        console.log(song)
         await playAudioFromVideo(song);
     }
     

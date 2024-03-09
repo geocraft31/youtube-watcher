@@ -8,6 +8,6 @@
 - [x] -create < playlist > Creates a new playlist
 - [x] -delete < playlist > Delets the playlist
 - [x] -playlist Plays videos from playlist 
-  - [ ] -shuffle Plays videos in random order
+  - [x] -shuffle Plays videos in random order
   - [x] -loop Play videos in loop
 - [ ] Help command
