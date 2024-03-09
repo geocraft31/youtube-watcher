@@ -85,12 +85,12 @@ export async function playlist(name, kwargs) {
         return console.error(`Playlist ${name} not found.`)
     }
 
-    await play(playlistData[name])
-
-    while (loop) {
+    while (true) {
+        await play(playlistData[name])
         await sleep(100)
 
-        await play(playlistData[name])
+        if (!loop)
+            break
     }
 
 
