@@ -1,6 +1,32 @@
 import { getPlaylistData, sleep, writePlaylistData } from "./util.mjs"
 import { playAudioFromVideo } from "./audio.mjs"
 
+
+function shuffle(playlist) {
+    try {
+        if(playlist.length <= 2) {
+            return console.log("Not enough songs to shuffle")
+        }
+
+        let currentIndex = playlist.length
+        let randomIndex = undefined
+        
+        while (currentIndex != 1) {
+            randomIndex = Math.floor(Math.random() * currentIndex)
+            currentIndex--
+            
+            let temp = playlist[currentIndex]
+            playlist[currentIndex] = playlist[randomIndex]
+            playlist[randomIndex] = temp
+        }
+
+    } catch (err) {
+        console.error(err)
+        console.log("No songs to shuffle")
+    }
+}
+
+
 export function list(targetPl) {
     const playlistData = getPlaylistData()
 
@@ -78,15 +104,19 @@ export async function play(songList) {
 
 export async function playlist(name, kwargs) {
     const loop = kwargs["loop"]
-    const shuffle = kwargs["shuffle"]
+    const shuffleFlag = kwargs["shuffle"]
 
     const playlistData = getPlaylistData()
     if (!Object.keys(playlistData).includes(name)) {
         return console.error(`Playlist ${name} not found.`)
     }
+    const playlist = playlistData[name]
 
     while (true) {
-        await play(playlistData[name])
+        if (shuffleFlag)
+            shuffle(playlist)
+
+        await play(playlist)
         await sleep(100)
 
         if (!loop)

@@ -19,6 +19,7 @@ async function getVideoData(query) {
     );
   }
 
+
   if (queryType == "yt_video" || queryType == "search") {
     const searchResult = await play.search(query, {
       source: { youtube: "video" },
