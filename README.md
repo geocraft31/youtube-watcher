@@ -1,7 +1,7 @@
 
 # Terminal Music
 
-Simple CLI to add the functionaly of playing music to the terminal from youtube. Using `node js` and the `play-dl` library to 
+Simple CLI to add the functionaly of playing music to the terminal from youtube. Using `node js` and the `play-dl` library to get video's audio.
 
 ## Requisites:
 
