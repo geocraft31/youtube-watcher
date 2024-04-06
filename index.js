@@ -76,7 +76,7 @@ program.command('list')
             console.log(` @ ${plName}:`)
 
             if (plData[plName].length == 0) {
-                console.log(`\x1B[90m   [ empty ]`)
+                console.log(`\x1B[90m   [ empty ] \x1B[0m`)
             }
 
             plData[plName].forEach(song => {
