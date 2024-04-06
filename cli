@@ -1,6 +1,0 @@
-#!/usr/bin/env node
-
-import playAudioFromVideo from "./index.mjs"
-
-playAudioFromVideo(process.argv[2])
-
