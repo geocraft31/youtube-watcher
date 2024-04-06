@@ -1,6 +1,0 @@
-#!/usr/bin/env node
-
-import main from "./index.mjs"
-
-// main(["--playlist", "small list", "--loop"])
-main(process.argv)

@@ -1,8 +1,8 @@
-import play from "play-dl";
-import { opus } from "prism-media";
-import Speaker from "speaker";
-import { hyperlink, sleep } from "./util.mjs";
 
+const play = require("play-dl")
+const { opus } = require("prism-media")
+const Speaker = require("speaker")
+const { hyperlink, sleep } = require("./util.js")
 
 
 async function getVideoData(query) {
@@ -35,7 +35,7 @@ async function getVideoData(query) {
 
 }
 
-export async function playAudioFromVideo(query) {
+async function playAudioFromVideo(query) {
   const videoList = await getVideoData(query);
   const video = videoList[0]
 
@@ -75,4 +75,8 @@ const speaker = new Speaker({
   
   await sleep((video.durationInSec) * 1000)
 
+}
+
+module.exports = {
+  playAudioFromVideo: playAudioFromVideo
 }

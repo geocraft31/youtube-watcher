@@ -10,4 +10,4 @@
 - [x] -playlist Plays videos from playlist 
   - [x] -shuffle Plays videos in random order
   - [x] -loop Play videos in loop
-- [ ] Help command
+- [x] Help command
