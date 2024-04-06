@@ -13,5 +13,5 @@ Simple CLI to add the functionaly of playing music to the terminal from youtube.
 
 Run command `git clone https://github.com/geocraft31/youtube-watcher.git`
 
-After downloading, `cd` to the project file and run the command `npm -link`
+After downloading go to the project directory, run `npm link` to make the program global (may require admin rights) and run `npm install` to install the project dependencies.
 
