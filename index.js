@@ -5,9 +5,12 @@ const {
   getPlaylistData,
   writePlaylistData,
   sleep,
+  isUrl,
   shuffleList,
+  searchYoutube,
 } = require("./util.js");
 const { playAudioFromVideo } = require("./audio.js");
+const { GetVideoDetails } = require("youtube-search-api");
 const program = new Command();
 
 program
@@ -88,19 +91,48 @@ program
 program
   .command("list")
   .description("List all playlist and their songs")
-  .action(() => {
+  .action(async () => {
     const plData = getPlaylistData();
-    Object.keys(plData).forEach((plName) => {
+    for (const plName of Object.keys(plData)) {
       console.log(` @ ${plName}:`);
 
       if (plData[plName].length == 0) {
         console.log(`\x1B[90m   [ empty ] \x1B[0m`);
       }
 
-      plData[plName].forEach((song) => {
-        console.log(`   - ${song}`);
-      });
-    });
+      for (const song of plData[plName]) {
+        if (isUrl(song)) {
+          let resultData = await searchYoutube(song);
+          console.log(`   - ${resultData[0].title}`);
+        } else {
+          console.log(`   - ${song}`);
+        }
+      }
+    }
+    //Object.keys(plData).forEach(async (plName) => {
+    //  console.log(` @ ${plName}:`);
+    //
+    //  if (plData[plName].length == 0) {
+    //    console.log(`\x1B[90m   [ empty ] \x1B[0m`);
+    //  }
+    //
+    //  for (const song of plData[plName]) {
+    //    if (isUrl(song)) {
+    //      let resultData = await searchYoutube(song);
+    //      console.log(`   - ${resultData[0].title}`);
+    //    } else {
+    //      console.log(`   - ${song}`);
+    //    }
+    //  }
+    //  //plData[plName].forEach(async (song) => {
+    //  //  if (isUrl(song)) {
+    //  //    let songData = await searchYoutube(song);
+    //  //    console.log(`\t-${songData.title}`);
+    //  //  } else {
+    //  //    console.log(`   - ${song}`);
+    //  //  }
+    //  //});
+    //});
   });
 
 program

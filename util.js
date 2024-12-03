@@ -3,6 +3,8 @@ const ytSearch = require("youtube-search-api");
 const { fileURLToPath } = require("url");
 const path = require("path");
 
+const BASE_YT_URL = "https://www.youtube.com/";
+
 const filePath = path.resolve(__filename, "..");
 
 function getVideoDurationInSeconds(duration) {
@@ -78,6 +80,13 @@ function shuffleList(list) {
   }
 }
 
+function isUrl(str) {
+  if (str.includes(BASE_YT_URL)) {
+    return true;
+  }
+  return false;
+}
+
 module.exports = {
   getPlaylistData: getPlaylistData,
   writePlaylistData: writePlaylistData,
@@ -86,4 +95,5 @@ module.exports = {
   shuffleList: shuffleList,
   searchYoutube: searchYoutube,
   getVideoDurationInSeconds: getVideoDurationInSeconds,
+  isUrl: isUrl,
 };

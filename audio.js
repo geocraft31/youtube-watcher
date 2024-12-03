@@ -1,6 +1,7 @@
 const ytdl = require("youtube-dl-exec");
 const ffmpeg = require("fluent-ffmpeg");
 const Speaker = require("speaker");
+const lua = require("lua-in-js");
 
 const {
   hyperlink,
@@ -53,7 +54,39 @@ async function playAudioFromVideo(query) {
   );
 
   const duration = getVideoDurationInSeconds(video.length.simpleText);
-  await sleep(duration * 1000);
+  await displayDurationBar(duration, source);
+}
+
+async function displayDurationBar(duration, source) {
+  var start = false;
+
+  source.stdout.on("data", (_) => {
+    start = true;
+  });
+
+  while (!start) {
+    await sleep(100);
+  }
+
+  let time = 0;
+  let width = process.stdout.columns;
+
+  while (time <= duration) {
+    let durationBar = ["["];
+    for (i = 0; i < (time / duration) * width - 2; i++) {
+      durationBar.push("-");
+    }
+    for (i = 0; i < ((duration - time) / duration) * width - 2; i++) {
+      durationBar.push(" ");
+    }
+    durationBar.push("]");
+
+    let _durationBar = durationBar.join("");
+    // console.log(_durationBar);
+
+    time++;
+    await sleep(1000);
+  }
 }
 
 module.exports = {
